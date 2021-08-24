@@ -9,12 +9,12 @@
 
 ## Get Started
 
-1. Obtain API Key
+### 1. Obtain API Key
 
 Please apply for an API Key using the form [here].
 It takes for 2~3 business days to issue the API Key.
 
-2. Publish NFT metadata
+### 2. Publish NFT metadata
 
 We use [nft.storage](https://nft.storage/) to publish a NFT metadata for ease.
 Run the code below.
@@ -49,11 +49,11 @@ You can also access the image via HTTP URL like this.
 https://dweb.link/ipfs/bafybeicsu73gednfaa5svozuoac4ebpi76nn4auhygcvkvbn4kk2vdv5ey/hokusai.png
 ```
 
-3. Let's Hokusai API
+### 3. Let's Hokusai API
 
 Now, you're ready to use Hokusai API!
 
-### Mint NFT
+#### Mint NFT
 ```
 curl -X POST -H "Content-Type: application/json" \ 
 "https://{endpointUrl}/v1/nfts/{contractId}/mint?key={apiKey}" \
