@@ -11,7 +11,7 @@
 
 ### 1. Obtain API Key
 
-Please apply for an API Key using the form [here](https://hokusai.app/pre-register).
+Please apply for an API Key via the form [here](https://hokusai.app/pre-register).
 It takes for 2~3 business days to issue the API Key.
 
 ### 2. Publish NFT metadata
