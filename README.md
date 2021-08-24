@@ -7,6 +7,8 @@
 - [Discord](https://discord.com/invite/34fmuE25G2)
 - [Twitter](https://twitter.com/0xHokusai)
 
+## Get Started
+
 1. Obtain API Key
 
 Please apply for an API Key using the form [here].
