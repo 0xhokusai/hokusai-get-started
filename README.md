@@ -19,7 +19,7 @@ It takes for 2~3 business days to issue the API Key.
 We use [nft.storage](https://nft.storage/) to publish a NFT metadata for ease.
 Run the code below.
 
-```
+```:bash
 git clone https://github.com/0xhokusai/hokusai-get-started.git
 cd hokusai-get-started
 cp .env.sample .env # and rewrite API Keys
@@ -35,8 +35,9 @@ ipfs://bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnvjnlnrb4/metadata.json
 [IPFS](https://docs.ipfs.io/) is a distributed system for storing and accessing files, websites, applications, and data.
 And you can access the metadata uploaded on IPFS via HTTPS URL like this.
 
-```
-$ curl https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnvjnlnrb4/metadata.json
+```:bash
+curl https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnvjnlnrb4/metadata.json
+
 {
     "name":"nft.storage store test",
     "description":"Using the nft.storage metadata API to create ERC-1155 compatible metadata.",
@@ -54,7 +55,7 @@ https://dweb.link/ipfs/bafybeicsu73gednfaa5svozuoac4ebpi76nn4auhygcvkvbn4kk2vdv5
 Now, you're ready to use Hokusai API!
 
 #### Mint NFT
-```
+```:bash
 curl -X POST -H "Content-Type: application/json" \ 
 "https://{endpointUrl}/v1/nfts/{contractId}/mint?key={apiKey}" \
 -d '{"to":"{ethAddress}", "tokenUri": "{tokenUri}"}'
