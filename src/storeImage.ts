@@ -3,7 +3,7 @@ import { NFTStorage, File, toGatewayURL } from 'nft.storage'
 require('dotenv').config()
 
 const endpoint = toGatewayURL('https://api.nft.storage')
-const token = process.env.API_KEY || ''
+const token = process.env.NFT_STORAGE_API_KEY || ''
 
 async function main() {
   const storage = new NFTStorage({ endpoint, token })

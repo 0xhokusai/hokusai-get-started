@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "start": "run-s tsc run-main",
-    "run-main": "node ./build/index.js",
+    "store-image": "run-s tsc run-store-image",
+    "run-store-image": "node ./build/storeImage.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
