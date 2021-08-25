@@ -2,9 +2,11 @@
 
 ## Get Started
 
+To get started with Hokusai API fastly, please clone this repository and proceed with the following tutorial.
+
 ### 1. Obtain API Key
 
-Please apply for an API Key via the form [here](https://hokusai.app/pre-register).
+Please apply for an API Key from [here](https://hokusai.app/pre-register).
 It takes for 2~3 business days to issue the API Key.
 
 ### 2. Create your wallet
@@ -67,6 +69,8 @@ If you don't know parameters, check [Hokudai API Document](https://docs.hokusai.
 ```:bash
 yarn get-nft {tokenId}
 ```
+
+Enjoy Hokusai API !
 
 ## Hokusai Links
 - [Homepage](https://hokusai.app)
