@@ -70,7 +70,7 @@ If you don't know parameters, check [Hokudai API Document](https://docs.hokusai.
 yarn get-nft {tokenId}
 ```
 
-Enjoy Hokusai API !
+You minted NFT and get NFT info via Hokusai API.
 
 ## Hokusai Links
 - [Homepage](https://hokusai.app)
