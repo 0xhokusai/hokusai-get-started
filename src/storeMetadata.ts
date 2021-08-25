@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { NFTStorage, File, toGatewayURL } from 'nft.storage'
+
 require('dotenv').config()
 
 const endpoint = toGatewayURL('https://api.nft.storage')
@@ -16,7 +17,8 @@ async function main() {
     })
   })
 
-  console.log('IPFS URL for the metadata:', metadata.url)
+  const url = new URL(metadata.url)
+  console.log(`HTTPS URL for the metadata: https://dweb.link/ipfs/${url.hostname}${url.pathname}`)
 }
 
 main()
