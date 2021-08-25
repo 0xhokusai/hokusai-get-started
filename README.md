@@ -25,8 +25,6 @@ We use [nft.storage](https://nft.storage/) to publish a NFT metadata for ease.
 Run the code below.
 
 ```:bash
-git clone https://github.com/0xhokusai/hokusai-get-started.git
-cd hokusai-get-started
 cp .env.sample .env # and rewrite API Keys
 yarn store-image # and you will publish metadata with hokusai.png
 ```
