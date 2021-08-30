@@ -26,7 +26,7 @@ Run the code below.
 
 ```:bash
 cp .env.sample .env # and rewrite API Keys
-yarn store-image # and you will publish metadata with hokusai.png
+yarn store-metadata # and you will publish metadata with hokusai.png
 ```
 
 You will get URL for the metadata like this.
