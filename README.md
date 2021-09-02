@@ -26,6 +26,7 @@ Run the code below.
 
 ```:bash
 cp .env.sample .env # and rewrite API Keys
+yarn # install the required packages
 yarn store-metadata # and you will publish metadata with hokusai.png
 ```
 
