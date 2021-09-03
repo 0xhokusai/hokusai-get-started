@@ -1,6 +1,7 @@
 # Getting Started with Hokusai API 🌊
 > This document covers the setup and basic usages of Hokusai API. <br>
 > After completing this tutorial,  you'll be able to use Hokusai API and start integrating NFT on your website. 
+> 
 ### Table of Contents
 **[Getting Started](#getting-started)**<br>
 **[Using Hokusai API](#using-hokusai-api)**<br>
