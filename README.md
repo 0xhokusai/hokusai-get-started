@@ -1,17 +1,21 @@
 # Get Started with Hokusai API
+This tutorial covers the setup and basics usage of Hokusai API.
+
+### Table of Contents
+**[Getting Started](#getting-started)**<br>
+**[Using Hokusai API](#using-hokusai-api)**<br>
+**[Hokusai Links](#hokusai-links)**<br>
+
+## Getting Started
+To get started with Hokusai API, please clone this repository and follow this tutorial.
+```:bash
+git clone https://github.com/0xhokusai/hokusai-get-started.git
+```
 Setup your Hokusai API ans start integrating NFT on your website. The setup requires following steps:
 - Obtain API key
 - Create your wallet
 - Publish NFT metadata
 - Access NFT metadata
-- Start using Hokusai API
-
-## Getting Started
-
-To get started with Hokusai API, please clone this repository and follow this  tutorial.
-```:bash
-git clone https://github.com/0xhokusai/hokusai-get-started.git
-```
 
 ### 1. Obtain your API key
 Submit your request for an API key [here](https://hokusai.app/pre-register). You will receive the key, consisting of `HOKUSAI_API_KEY` and `HOKUSAI_CONTRACT_ID`. Currently, it takes for 2-3 business days to issue the API Key. 
@@ -64,7 +68,7 @@ curl https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnv
     "image":"ipfs://bafybeicsu73gednfaa5svozuoac4ebpi76nn4auhygcvkvbn4kk2vdv5ey/hokusai.png"
 }
 ```
-### 4. Using Hokusai API
+## Using Hokusai API
 Congratulations! Now, you're ready to use Hokusai API. Check out [Hokudai API Document](https://docs.hokusai.app/) for our full documentation . Let's try mininting and getting an NFT. 
 
 #### Mint an NFT
