@@ -3,6 +3,7 @@ Setup your Hokusai API ans start integrating NFT on your website. The setup requ
 - Obtain API key
 - Create your wallet
 - Publish NFT metadata
+- Access NFT metadata
 - Start using Hokusai API
 
 ## Getting Started
@@ -13,7 +14,7 @@ git clone https://github.com/0xhokusai/hokusai-get-started.git
 ```
 
 ### 1. Obtain your API key
-Submit your request for an API key [here](https://hokusai.app/pre-register). You will receive the key consisting of `HOKUSAI_API_KEY` and `HOKUSAI_CONTRACT_ID`. Currently, it takes for 2-3 business days to issue the API Key. 
+Submit your request for an API key [here](https://hokusai.app/pre-register). You will receive the key, consisting of `HOKUSAI_API_KEY` and `HOKUSAI_CONTRACT_ID`. Currently, it takes for 2-3 business days to issue the API Key. 
 
 ### 2. Create your wallet
 To mint an NFT, you must have your wallet addrress.
@@ -47,16 +48,15 @@ yarn store-metadata
 You will get a URL for the metadata like this.
 
 ```
-https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnvjnlnrb4//metadata.json
+HTTPS URL for the metadata: https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnvjnlnrb4//metadata.json # example metadata url
 ```
-
-//ここまで
-
+#### 3.4 Access metadata 
+You can access the metadata uploaded on IPFS via HTTPS URL by running the code below.
 [IPFS](https://docs.ipfs.io/) is a distributed system for storing and accessing files, websites, applications, and data.
-And you can access the metadata uploaded on IPFS via HTTPS URL like this.
+Learn more about IPFS [here](https://docs.ipfs.io/concepts/what-is-ipfs/#decentralization)
 
 ```:bash
-curl https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnvjnlnrb4/metadata.json
+curl https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnvjnlnrb4/metadata.json # example metadata url
 
 {
     "name":"nft.storage store test",
@@ -64,28 +64,27 @@ curl https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnv
     "image":"ipfs://bafybeicsu73gednfaa5svozuoac4ebpi76nn4auhygcvkvbn4kk2vdv5ey/hokusai.png"
 }
 ```
+### 4. Using Hokusai API
+Congratulations! Now, you're ready to use Hokusai API. Check out [Hokudai API Document](https://docs.hokusai.app/) for our full documentation . Let's try mininting and getting an NFT. 
 
-### 4. Let's Hokusai API
-
-Now, you're ready to use Hokusai API!
-
-#### Mint NFT
-
+#### Mint an NFT
+To [mint](https://docs.hokusai.app/api/glosarry/#mint) an NFT, run the code below. 
 ```:bash
 yarn mint-nft {to} {tokenUri}
+{
+  txHash: '0x8765feaa11a7e0f9f4a84f21415434d80dd9be27728a8f6eff4d402e4d0c2766' # example Transaction Hash
+}
 ```
+You may refer to our documentatiion [here](https://docs.hokusai.app/api/nft/mint) for parameter description.
 
-If you don't know parameters, check [Hokudai API Document](https://docs.hokusai.app/).
-
-#### Get NFT
-
-`tokenId` issued by Hokusai API can check via [polygonscan](https://mumbai.polygonscan.com)
+#### Get an NFT
+`tokenId` issued by Hokusai API can be viewed via [polygonscan](https://mumbai.polygonscan.com). You can search by txHash received from minting. 
 
 ```:bash
 yarn get-nft {tokenId}
+{ id: {tokenId}, tokenUri: 'https://example.com/1' } # example response
 ```
-
-You minted NFT and got NFT info via Hokusai API.
+Now you have minted NFT and got NFT info via Hokusai API.
 
 ## Hokusai Links
 - [Homepage](https://hokusai.app)
