@@ -4,7 +4,7 @@ import { getMetaTxMessageWithSignature } from './lib/MetaTx';
 
 require("dotenv").config();
 
-const baseUrl = "https://mumbai.hokusai.app";
+const baseUrl = "https://polygon.hokusai.app";
 
 type TransferRequest = {
   request: MessageWithSignature
@@ -49,7 +49,7 @@ async function main() {
   const apiKey = process.env.HOKUSAI_API_KEY || ""
   const contractId = process.env.HOKUSAI_CONTRACT_ID || ""
   const contractAddress = process.env.HOKUSAI_CONTRACT_ADDRESS || ""
-  const forwarderAddress = "0x04D2fA199bd15a6D118B5481dc646cbfCBED425D" // Mumbai(testnet) forwarder address
+  const forwarderAddress = "0xD64a425d91a97866cE4ee2d759A23560411ADb01" // Polygon mainnet forwarder address
   const toAddress = argv[0] || ""
   const tokenId = Number(argv[1]) || 0
 

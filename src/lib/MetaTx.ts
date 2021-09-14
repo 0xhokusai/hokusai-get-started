@@ -14,7 +14,7 @@ export async function getMetaTxMessageWithSignature(
   toAddress: string,
   tokenId: number,
 ) {
-  const RPC = "https://rpc-mumbai.matic.today"
+  const RPC = "https://rpc-mainnet.matic.network"
   const provider = new ethers.providers.JsonRpcProvider(RPC)
   const signer = new ethers.Wallet(walletPrivateKey)
 
