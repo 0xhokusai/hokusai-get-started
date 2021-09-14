@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 require('dotenv').config()
 
-const baseUrl = "https://mumbai.hokusai.app"
+const baseUrl = "https://mumbai.hokusai.app";
 
 const getNft = async (baseUrl: string, apiKey: string, contractId: string, tokenId: string) => {
     const path = `/v1/nfts/${contractId}/${tokenId}`
