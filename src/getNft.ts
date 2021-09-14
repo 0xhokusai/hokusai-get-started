@@ -5,7 +5,6 @@ require("dotenv").config();
 const baseUrl = "https://polygon.hokusai.app";
 // If you using the Mumbai testnet, change the baseUrl to "https://mumbai.hokusai.app".
 
-
 const getNft = async (
   baseUrl: string,
   apiKey: string,
