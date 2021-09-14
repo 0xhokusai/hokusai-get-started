@@ -61,11 +61,8 @@ async function main() {
       toAddress,
       tokenId
     )
-    console.log("Message with signature:")
-    console.log(messageWithSignature)
 
     const res = await transferNft(baseUrl, apiKey, contractId, messageWithSignature)
-    console.log("Transfer result:")
     console.log(res)
   } catch(error) {
     console.log(error)
