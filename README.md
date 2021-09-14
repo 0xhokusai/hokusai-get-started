@@ -36,6 +36,7 @@ We use [nft.storage](https://nft.storage/) to publish NFT metadata.
 Follow the setup guideline for nft.storage [here](https://nft.storage/#getting-started).
 #### 3.2 Add your API keys
 Copy the `.env.sample` file and fill in your own API keys in `.env` file.
+
 ```:bash
 cp .env.sample .env # and rewrite API Keys
 ```
@@ -70,6 +71,7 @@ curl https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnv
 ```
 ## Using Hokusai API
 Congratulations! You're ready to use Hokusai API. Check out [Hokusai API Document](https://docs.hokusai.app/) for the full documentation. Now, let's try minting and getting an NFT. 
+If you using the Mumbai testnet, change the baseUrl of src/getNft.ts and src/mintNft.ts's to "https://mumbai.hokusai.app".
 
 #### Mint an NFT
 To [mint](https://docs.hokusai.app/api/glosarry/#mint) an NFT, run the code below
