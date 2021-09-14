@@ -36,7 +36,6 @@ We use [nft.storage](https://nft.storage/) to publish NFT metadata.
 Follow the setup guideline for nft.storage [here](https://nft.storage/#getting-started).
 #### 3.2 Add your API keys
 Copy the `.env.sample` file and fill in your own API keys in `.env` file.
-
 ```:bash
 cp .env.sample .env # and rewrite API Keys
 ```
