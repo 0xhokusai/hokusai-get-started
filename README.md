@@ -12,4 +12,4 @@
 > 
 **[Getting Started Documents](https://0xhokusai.stoplight.io/docs/hokusai-api/ZG9jOjIyMDIxMDEx-getting-started-with-hokusai-api)**<br>
 **[Using Hokusai API](https://0xhokusai.stoplight.io/docs/hokusai-api/YXBpOjMxMDAw-hokusai-api-v1)**<br>
-**[Hokusai Links](https://0xhokusai.stoplight.io/docs/hokusai-api/ZG9jOjIyMDIxMDE1-welcome-to-hokusai#links-)**<br>
+**[Hokusai Links](https://0xhokusai.stoplight.io/docs/hokusai-api/ZG9jOjIyMDIxMDE1-welcome-to-hokusai#links-)**<br> 
