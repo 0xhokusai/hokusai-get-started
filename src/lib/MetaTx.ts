@@ -1,66 +1,99 @@
-import { ethers } from 'ethers';
-import {
-	Message,
-  MessageWithSignature,
-  createTypedDataV4
-} from './TypedData';
-import ForwarderAbi from './abis/MinimalForwarder.json';
-import HokusaiAbi from './abis/ERC721WithRoyaltyMetaTx.json';
+import { ethers } from "ethers";
+import ForwarderAbi from "./abis/MinimalForwarder.json";
+import HokusaiAbi from "./abis/ERC721WithRoyaltyMetaTx.json";
 
-export async function getMetaTxMessageWithSignature(
-  walletPrivateKey: string,
-  contractAddress: string,
-  forwarderAddress: string,
-  toAddress: string,
-  tokenId: number,
+export type Message = {
+  from: string;
+  to: string;
+  value: number;
+  gas: number;
+  nonce: number;
+  data: string;
+};
+
+export type MessageWithSignature = Message & { signature: string };
+
+/*
+const EIP712DomainType = [
+  { name: 'name', type: 'string' },
+  { name: 'version', type: 'string' },
+  { name: 'chainId', type: 'uint256' },
+  { name: 'verifyingContract', type: 'address' },
+];
+*/
+
+const ForwardRequestType = [
+  { name: "from", type: "address" },
+  { name: "to", type: "address" },
+  { name: "value", type: "uint256" },
+  { name: "gas", type: "uint256" },
+  { name: "nonce", type: "uint256" },
+  { name: "data", type: "bytes" },
+];
+
+// https://eips.ethereum.org/EIPS/eip-712
+export function createTypedDataV4(
+  chainId: number,
+  ForwarderAddress: string,
+  message: Message
 ) {
-  const RPC = "https://rpc-mainnet.matic.network"
-  const provider = new ethers.providers.JsonRpcProvider(RPC)
-  const signer = new ethers.Wallet(walletPrivateKey)
+  const TypedData = {
+    primaryType: "ForwardRequest" as const,
+    types: {
+      // EIP712Domain: EIP712DomainType,
+      ForwardRequest: ForwardRequestType,
+    },
+    domain: {
+      // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/metatx/MinimalForwarder.sol
+      name: "MinimalForwarder",
+      version: "0.0.1",
+      chainId,
+      verifyingContract: ForwarderAddress,
+    },
+    message,
+  };
+  return TypedData;
+}
 
-  const { chainId } = await provider.getNetwork()
-  const address = await signer.getAddress()
-
-  // Setup contracts
+export async function sign(
+  rpc: string,
+  signer: ethers.Wallet,
+  from: string,
+  value: number,
+  data: string,
+  forwarderAddress: string,
+  contractAddress: string
+): Promise<MessageWithSignature> {
+  const provider = new ethers.providers.JsonRpcProvider(rpc);
   const forwarder = new ethers.Contract(
     forwarderAddress,
     ForwarderAbi.abi,
     provider
   );
-  const hokusaiInterface = new ethers.utils.Interface(HokusaiAbi.abi);
 
-  // Create tranferFrom data
-  const data = hokusaiInterface.encodeFunctionData('transferFrom', [
-    address,
-    toAddress,
-    tokenId,
-  ]);
-
-  // Create meta transaction message
-  const message: Message = {
-    from: address,
-    to: contractAddress,
-    value: 0,
-    gas: 1e6,
-    nonce: (await forwarder.getNonce(address)).toNumber(),
-    data,
-  }
-
-  // Create typedDataV4
-  const typedData = createTypedDataV4(
-    chainId,
-    forwarderAddress,
-    message
+  const contract = new ethers.Contract(
+    contractAddress,
+    HokusaiAbi.abi,
+    provider
   );
 
-  // Sign message
-  const signature =  await signer._signTypedData(
-    typedData.domain,
-    typedData.types,
-    typedData.message
-  )
-  const messageWithSignature: MessageWithSignature = {...message, signature}
+  const request = {
+    from,
+    to: contract.address,
+    value,
+    gas: 1e6,
+    nonce: (await forwarder.getNonce(signer.address)).toNumber(),
+    data,
+  };
+  const { chainId } = await provider.getNetwork();
+  const TypedData = createTypedDataV4(chainId, forwarder.address, request);
 
-  return messageWithSignature
+  // sign
+  const signature = await signer._signTypedData(
+    TypedData.domain,
+    TypedData.types,
+    TypedData.message
+  );
+
+  return { ...request, signature };
 }
-
