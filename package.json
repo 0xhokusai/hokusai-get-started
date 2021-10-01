@@ -11,12 +11,15 @@
     "mint-nft:run": "node ./build/mintNft.js",
     "get-nft": "yarn tsc && yarn get-nft:run",
     "get-nft:run": "node ./build/getNft.js",
+    "transfer-nft": "yarn tsc && yarn transfer-nft:run",
+    "transfer-nft:run": "node ./build/transferNft.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
+    "ethers": "^5.4.6",
     "nft.storage": "^3.1.3",
     "node-fetch": "^2.6.1"
   },

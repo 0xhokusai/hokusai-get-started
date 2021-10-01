@@ -70,6 +70,7 @@ curl https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnv
 ```
 ## Using Hokusai API
 Congratulations! You're ready to use Hokusai API. Check out [Hokusai API Document](https://docs.hokusai.app/) for the full documentation. Now, let's try minting and getting an NFT. 
+If you using the Mumbai testnet, change the baseUrl of src/getNft.ts and src/mintNft.ts's to "https://mumbai.hokusai.app".
 
 #### Mint an NFT
 To [mint](https://docs.hokusai.app/api/glosarry/#mint) an NFT, run the code below
@@ -88,7 +89,23 @@ You may refer to our documentation [here](https://docs.hokusai.app/api/nft/mint)
 yarn get-nft {tokenId}
 { id: {tokenId}, tokenUri: 'https://example.com/1' } # example response
 ```
-So far, you have minted an NFT and got NFT info via Hokusai API. See what else you can do with our API on [Hokusai API Document](https://docs.hokusai.app/) 🥳
+
+#### Transfer an NFT
+To transfer an NFT, you need to perform 2 steps:
+
+1. Fill in the private key of your wallet in `.env` file ([Get the private key](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key))
+2. Run the code below
+
+```:bash
+yarn transfer-nft {to} {tokenId}
+{
+  txHash: '0xdec77ee7148dc796dd08d656a256e1466daf2763c08cfe104f76e8baf318f3ed' # example Transaction Hash
+}
+```
+
+> :warning: **The private key is very sensitive information. You should make sure no one else sees.**
+
+So far, you have minted an NFT, got NFT info and transfered an NFT via Hokusai API. See what else you can do with our API on [Hokusai API Document](https://docs.hokusai.app/) 🥳
 
 ## Hokusai Links
 - [Homepage](https://hokusai.app)
