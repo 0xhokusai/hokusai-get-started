@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 require("dotenv").config();
 
-const baseUrl = "https://polygon.hokusai.app";
+const baseUrl = "https://mumbai.hokusai.app";
 
 const mintNft = async (
   baseUrl: string,
@@ -22,6 +22,7 @@ const mintNft = async (
     body: JSON.stringify(requestBody),
   });
   if (res.status != 200) {
+    console.log(res.status);
     throw new Error(await res.text());
   }
   return res.json();
@@ -33,6 +34,8 @@ if (argv.length !== 2) {
   console.log("Usage: node mintNft.ts <to> <tokenUri>");
   process.exit(1);
 }
+
+console.log(`baseUrl: ${baseUrl}`);
 
 mintNft(
   baseUrl,
@@ -47,4 +50,3 @@ mintNft(
   .catch((err) => {
     console.log(err);
   });
-

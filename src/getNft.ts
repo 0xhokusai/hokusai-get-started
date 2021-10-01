@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 require("dotenv").config();
 
-const baseUrl = "https://polygon.hokusai.app";
+const baseUrl = "https://mumbai.hokusai.app";
 
 const getNft = async (
   baseUrl: string,
@@ -31,4 +31,3 @@ getNft(
   process.env.HOKUSAI_CONTRACT_ID || "",
   argv[0]
 ).then((res) => console.log(res));
-
