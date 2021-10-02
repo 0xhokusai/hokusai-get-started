@@ -1,25 +1,21 @@
-import { ethers } from 'ethers';
-import {
-	Message,
-  MessageWithSignature,
-  createTypedDataV4
-} from './TypedData';
-import ForwarderAbi from './abis/MinimalForwarder.json';
-import HokusaiAbi from './abis/ERC721WithRoyaltyMetaTx.json';
+import { ethers } from "ethers";
+import { Message, MessageWithSignature, createTypedDataV4 } from "./TypedData";
+import ForwarderAbi from "./abis/MinimalForwarder.json";
+import HokusaiAbi from "./abis/ERC721WithRoyaltyMetaTx.json";
 
 export async function getMetaTxMessageWithSignature(
   walletPrivateKey: string,
   contractAddress: string,
   forwarderAddress: string,
   toAddress: string,
-  tokenId: number,
+  tokenId: number
 ) {
-  const RPC = "https://rpc-mainnet.matic.network"
-  const provider = new ethers.providers.JsonRpcProvider(RPC)
-  const signer = new ethers.Wallet(walletPrivateKey)
+  const RPC = "https://rpc-mumbai.matic.today";
+  const provider = new ethers.providers.JsonRpcProvider(RPC);
+  const signer = new ethers.Wallet(walletPrivateKey);
 
-  const { chainId } = await provider.getNetwork()
-  const address = await signer.getAddress()
+  const { chainId } = await provider.getNetwork();
+  const address = await signer.getAddress();
 
   // Setup contracts
   const forwarder = new ethers.Contract(
@@ -30,7 +26,7 @@ export async function getMetaTxMessageWithSignature(
   const hokusaiInterface = new ethers.utils.Interface(HokusaiAbi.abi);
 
   // Create tranferFrom data
-  const data = hokusaiInterface.encodeFunctionData('transferFrom', [
+  const data = hokusaiInterface.encodeFunctionData("transferFrom", [
     address,
     toAddress,
     tokenId,
@@ -44,23 +40,18 @@ export async function getMetaTxMessageWithSignature(
     gas: 1e6,
     nonce: (await forwarder.getNonce(address)).toNumber(),
     data,
-  }
+  };
 
   // Create typedDataV4
-  const typedData = createTypedDataV4(
-    chainId,
-    forwarderAddress,
-    message
-  );
+  const typedData = createTypedDataV4(chainId, forwarderAddress, message);
 
   // Sign message
-  const signature =  await signer._signTypedData(
+  const signature = await signer._signTypedData(
     typedData.domain,
     typedData.types,
     typedData.message
-  )
-  const messageWithSignature: MessageWithSignature = {...message, signature}
+  );
+  const messageWithSignature: MessageWithSignature = { ...message, signature };
 
-  return messageWithSignature
+  return messageWithSignature;
 }
-
