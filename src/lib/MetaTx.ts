@@ -4,18 +4,14 @@ import ForwarderAbi from "./abis/MinimalForwarder.json";
 import HokusaiAbi from "./abis/ERC721WithRoyaltyMetaTx.json";
 
 export async function getMetaTxMessageWithSignature(
+  rpc: string,
   walletPrivateKey: string,
   contractAddress: string,
   forwarderAddress: string,
   toAddress: string,
   tokenId: number
 ) {
-  const RPC = "https://rpc-mumbai.maticvigil.com";
-  // If NETWORK_ERROR occur, try these RPC instead.
-  // const RPC = "https://rpc-mumbai.maticvigil.com";
-  // const RPC = "https://matic-mumbai.chainstacklabs.com";
-  // const RPC = "https://matic-testnet-archive-rpc.bwarelabs.com";
-  const provider = new ethers.providers.JsonRpcProvider(RPC);
+  const provider = new ethers.providers.JsonRpcProvider(rpc);
   const signer = new ethers.Wallet(walletPrivateKey);
 
   const { chainId } = await provider.getNetwork();

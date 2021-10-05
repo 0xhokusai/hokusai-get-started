@@ -5,6 +5,11 @@ import { getMetaTxMessageWithSignature } from "./lib/MetaTx";
 require("dotenv").config();
 
 const baseUrl = "https://mumbai.hokusai.app";
+const RPC = "https://rpc-mumbai.maticvigil.com";
+// If NETWORK_ERROR occur, try these RPC instead.
+// const RPC = "https://rpc-mumbai.maticvigil.com";
+// const RPC = "https://matic-mumbai.chainstacklabs.com";
+// const RPC = "https://matic-testnet-archive-rpc.bwarelabs.com";
 
 type TransferRequest = {
   request: MessageWithSignature;
@@ -55,6 +60,7 @@ async function main() {
 
   try {
     const messageWithSignature = await getMetaTxMessageWithSignature(
+      RPC,
       walletPrivateKey,
       contractAddress,
       forwarderAddress,
