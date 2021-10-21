@@ -10,12 +10,12 @@ const setRoyalty = async (
   contractId: string,
   tokenId: string,
   percentage: number,
-  address: string
+  receiver: string
 ) => {
   const path = `/v1/nfts/${contractId}/${tokenId}/royalty`;
   const url = new URL(baseUrl + path);
   const params = { key: apiKey };
-  const requestBody = { percentage, address };
+  const requestBody = { percentage, receiver };
   url.search = new URLSearchParams(params).toString();
   const res = await fetch(url.toString(), {
     method: "POST",
@@ -47,8 +47,10 @@ setRoyalty(
   argv[2]
 )
   .then((res) => {
+    console.log('success')
     console.log(res);
   })
   .catch((err) => {
+    console.log('err')
     console.log(err);
   });
