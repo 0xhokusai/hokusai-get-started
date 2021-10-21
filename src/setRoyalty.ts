@@ -32,7 +32,7 @@ const setRoyalty = async (
 const argv = process.argv.slice(2);
 
 if (argv.length !== 3) {
-  console.log("Usage: node setRoyalty.ts <receiver> <percentage> <address>");
+  console.log("Usage: node setRoyalty.ts <tokenId> <percentage> <receiver>");
   process.exit(1);
 }
 
