@@ -13,6 +13,10 @@
     "get-nft:run": "node ./build/getNft.js",
     "transfer-nft": "yarn tsc && yarn transfer-nft:run",
     "transfer-nft:run": "node ./build/transferNft.js",
+    "set-royalty": "yarn tsc && yarn set-royalty:run",
+    "set-royalty:run": "node ./build/setRoyalty.js",
+    "get-royalty": "yarn tsc && yarn get-royalty:run",
+    "get-royalty:run": "node ./build/getRoyalty.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
