@@ -53,7 +53,7 @@ async function main() {
   const walletPrivateKey = process.env.WALLET_PRIVATE_KEY || "";
   const apiKey = process.env.HOKUSAI_API_KEY || "";
   const contractId = process.env.HOKUSAI_CONTRACT_ID || "";
-  const contractAddress = "0x73b5373a27f4a271c6559c6c83b10620acde9a2a";
+  const contractAddress = process.env.HOKUSAI_CONTRACT_ADDRESS || "";
   const forwarderAddress = "0x0E285b682EAF6244a2AD3b1D25cFe61BF6A41fc3";
   const toAddress = argv[0] || "";
   const tokenId = Number(argv[1]) || 0;
@@ -81,4 +81,3 @@ async function main() {
 }
 
 main();
-
