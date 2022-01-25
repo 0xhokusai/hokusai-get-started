@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { MessageWithSignature } from "./lib/TypedData";
-import { getMetaTxMessageWithSignature } from "./lib/MetaTx";
+import { getTransferMessageWithSignature } from "./lib/MetaTx";
 
 require("dotenv").config();
 
@@ -46,7 +46,7 @@ async function main() {
   const argv = process.argv.slice(2);
 
   if (argv.length !== 2) {
-    console.log("Usage: node mintNft.ts <to> <tokenId>");
+    console.log("Usage: node transferNft.ts <to> <tokenId>");
     process.exit(1);
   }
 
@@ -59,7 +59,7 @@ async function main() {
   const tokenId = Number(argv[1]) || 0;
 
   try {
-    const messageWithSignature = await getMetaTxMessageWithSignature(
+    const messageWithSignature = await getTransferMessageWithSignature(
       RPC,
       walletPrivateKey,
       contractAddress,
