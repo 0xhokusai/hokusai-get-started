@@ -13,6 +13,8 @@
     "get-nft:run": "node ./build/getNft.js",
     "transfer-nft": "yarn tsc && yarn transfer-nft:run",
     "transfer-nft:run": "node ./build/transferNft.js",
+    "burn-nft": "yarn tsc && yarn burn-nft:run",
+    "burn-nft:run": "node ./build/burnNft.js",
     "set-royalty": "yarn tsc && yarn set-royalty:run",
     "set-royalty:run": "node ./build/setRoyalty.js",
     "get-royalty": "yarn tsc && yarn get-royalty:run",
