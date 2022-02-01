@@ -2,3 +2,8 @@ build
 node_modules
 .env
 yarn-error.log
+.DS_Store
+body.json
+keys.json
+metadata.json
+target.json

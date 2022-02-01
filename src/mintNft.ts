@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 require("dotenv").config();
 
-const baseUrl = "https://mumbai.hokusai.app";
+const baseUrl = "https://hokusai-api-data-provider-polygon-mumbai-46tkkbtg2q-an.a.run.app";
 
 const mintNft = async (
   baseUrl: string,
@@ -16,6 +16,7 @@ const mintNft = async (
   const params = { key: apiKey };
   const requestBody = { to, tokenUri };
   url.search = new URLSearchParams(params).toString();
+  console.log("fetching " + url.toString())
   const res = await fetch(url.toString(), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -48,5 +49,5 @@ mintNft(
     console.log(res);
   })
   .catch((err) => {
-    console.log(err);
+    console.error(err);
   });

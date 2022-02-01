@@ -4,6 +4,7 @@ import { getMetaTxMessageWithSignature } from "./lib/MetaTx";
 
 require("dotenv").config();
 
+//const baseUrl = "https://hokusai-api-data-provider-polygon-mumbai-ietjx4r6ga-an.a.run.app";
 const baseUrl = "https://mumbai.hokusai.app";
 const RPC = "https://rpc-mumbai.maticvigil.com";
 // If NETWORK_ERROR occur, try these RPC instead.
@@ -53,7 +54,7 @@ async function main() {
   const walletPrivateKey = process.env.WALLET_PRIVATE_KEY || "";
   const apiKey = process.env.HOKUSAI_API_KEY || "";
   const contractId = process.env.HOKUSAI_CONTRACT_ID || "";
-  const contractAddress = "0x73b5373a27f4a271c6559c6c83b10620acde9a2a";
+  const contractAddress = "0x08b8Df71BFe3a2f0c4178e6EE1E4d5f5e51B3027";
   const forwarderAddress = "0x0E285b682EAF6244a2AD3b1D25cFe61BF6A41fc3";
   const toAddress = argv[0] || "";
   const tokenId = Number(argv[1]) || 0;
