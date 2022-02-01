@@ -1,10 +1,9 @@
 import fetch from "node-fetch";
 import { MessageWithSignature } from "./lib/TypedData";
-import { getTransferMessageWithSignature } from "./lib/MetaTx";
+import { getBurnMessageWithSignature } from "./lib/MetaTx";
 
 require("dotenv").config();
 
-//const baseUrl = "https://hokusai-api-data-provider-polygon-mumbai-ietjx4r6ga-an.a.run.app";
 const baseUrl = "https://mumbai.hokusai.app";
 const RPC = "https://rpc-mumbai.maticvigil.com";
 // If NETWORK_ERROR occur, try these RPC instead.
@@ -46,8 +45,8 @@ async function transferNft(
 async function main() {
   const argv = process.argv.slice(2);
 
-  if (argv.length !== 2) {
-    console.log("Usage: node transferNft.ts <to> <tokenId>");
+  if (argv.length !== 1) {
+    console.log("Usage: node burnNft.ts <tokenId>");
     process.exit(1);
   }
 
@@ -56,16 +55,14 @@ async function main() {
   const contractId = process.env.HOKUSAI_CONTRACT_ID || "";
   const contractAddress = process.env.HOKUSAI_CONTRACT_ADDRESS || "";
   const forwarderAddress = "0x0E285b682EAF6244a2AD3b1D25cFe61BF6A41fc3";
-  const toAddress = argv[0] || "";
-  const tokenId = Number(argv[1]) || 0;
+  const tokenId = Number(argv[0]) || 0;
 
   try {
-    const messageWithSignature = await getTransferMessageWithSignature(
+    const messageWithSignature = await getBurnMessageWithSignature(
       RPC,
       walletPrivateKey,
       contractAddress,
       forwarderAddress,
-      toAddress,
       tokenId
     );
 

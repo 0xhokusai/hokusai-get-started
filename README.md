@@ -102,6 +102,18 @@ yarn transfer-nft {to} {tokenId}
   txHash: '0xdec77ee7148dc796dd08d656a256e1466daf2763c08cfe104f76e8baf318f3ed' # example Transaction Hash
 }
 ```
+#### Burn an NFT
+To Burn an NFT, you need to perform 2 steps:
+
+1. Fill in the private key of your wallet in `.env` file ([Get the private key](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key))
+2. Run the code below
+
+```:bash
+yarn burn-nft {tokenId}
+{
+  txHash: '0x67eca6ca63d542f4b01fd60d53feda89ce64f42394c27b77fa3fccbb15244d3c' # example Transaction Hash
+}
+```
 
 > :warning: **The private key is very sensitive information. You should make sure no one else sees.**
 
