@@ -11,12 +11,12 @@ const mintNft = async (
   contractVer: string,
   contractId: string,
   to: string,
-  tokenUri: string
+  tokenURI: string
 ) => {
   const path = `/v2/${network}/nft/${contractVer}/${contractId}/mint`;
   const url = new URL(baseUrl + path);
   const params = { key: apiKey };
-  const requestBody = [{to, tokenUri}];
+  const requestBody = [{to, tokenURI}];
   url.search = new URLSearchParams(params).toString();
   const res = await fetch(url.toString(), {
     method: "POST",
@@ -33,7 +33,7 @@ const mintNft = async (
 const argv = process.argv.slice(2);
 
 if (argv.length !== 2) {
-  console.log("Usage: node mintNft.ts <to> <tokenUri>");
+  console.log("Usage: node mintNft.ts <to> <tokenURI>");
   process.exit(1);
 }
 
