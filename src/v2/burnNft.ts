@@ -17,12 +17,13 @@ type TransferRequest = {
 
 async function transferNft(
   baseUrl: string,
+  network: string,
   apiKey: string,
   contractVer: string,
   contractId: string,
   messageWithSignature: MessageWithSignature
 ) {
-  const path = `/v2/nft/${contractVer}/${contractId}/transfer`;
+  const path = `/v2/${network}/nft/${contractVer}/${contractId}/transfer`;
   const url = new URL(`${baseUrl}${path}`);
   const params = { key: apiKey };
   const requestBody: TransferRequest = { request: messageWithSignature };
@@ -52,6 +53,7 @@ async function main() {
   }
 
   const walletPrivateKey = process.env.WALLET_PRIVATE_KEY || "";
+  const network = process.env.CONTRACT_NETWORK || "";
   const apiKey = process.env.HOKUSAI_API_KEY || "";
   const contractVer = process.env.HOKUSAI_CONTRACT_VERSION || "";
   const contractId = process.env.HOKUSAI_CONTRACT_ID || "";
@@ -70,6 +72,7 @@ async function main() {
 
     const res = await transferNft(
       baseUrl,
+      network,
       apiKey,
       contractVer,
       contractId,

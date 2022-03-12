@@ -6,12 +6,13 @@ const baseUrl = "https://mumbai.hokusai.app";
 
 const getRoyalty = async (
   baseUrl: string,
+  network: string,
   apiKey: string,
   contractVer: string,
   contractId: string,
   tokenId: string
 ) => {
-  const path = `/v2/nft/${contractVer}/${contractId}/${tokenId}/royalty`;
+  const path = `/v2/${network}/nft/${contractVer}/${contractId}/${tokenId}/royalty`;
   const url = new URL(baseUrl + path);
   const params = { key: apiKey };
   url.search = new URLSearchParams(params).toString();
@@ -34,6 +35,7 @@ console.log(`baseUrl: ${baseUrl}`);
 
 getRoyalty(
   baseUrl,
+  process.env.CONTRACT_NETWORK || "",
   process.env.HOKUSAI_API_KEY || "",
   process.env.HOKUSAI_CONTRACT_VERSION || "",
   process.env.HOKUSAI_CONTRACT_ID || "",

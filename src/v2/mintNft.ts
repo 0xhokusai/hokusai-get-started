@@ -6,13 +6,14 @@ const baseUrl = "https://mumbai.hokusai.app";
 
 const mintNft = async (
   baseUrl: string,
+  network: string,
   apiKey: string,
   contractVer: string,
   contractId: string,
   to: string,
   tokenUri: string
 ) => {
-  const path = `/v2/nft/${contractVer}/${contractId}/mint`;
+  const path = `/v2/${network}/nft/${contractVer}/${contractId}/mint`;
   const url = new URL(baseUrl + path);
   const params = { key: apiKey };
   const requestBody = [{to, tokenUri}];
@@ -40,6 +41,7 @@ console.log(`baseUrl: ${baseUrl}`);
 
 mintNft(
   baseUrl,
+  process.env.CONTRACT_NETWORK || "",
   process.env.HOKUSAI_API_KEY || "",
   process.env.HOKUSAI_CONTRACT_VERSION || "",
   process.env.HOKUSAI_CONTRACT_ID || "",
