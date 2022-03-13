@@ -26,7 +26,7 @@
 
     "transfer-nft": "yarn transfer-nft:v2",
     "transfer-nft:v1": "yarn tsc && yarn transfer-nft:v1:run",
-    "transfer-nft:v2": "yarn tsc && transfer-nft:v2:run",
+    "transfer-nft:v2": "yarn tsc && yarn transfer-nft:v2:run",
     "transfer-nft:v1:run": "node ./build/v1/transferNft.js",
     "transfer-nft:v2:run": "node ./build/v2/transferNft.js",
 
