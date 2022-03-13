@@ -1,14 +1,14 @@
-# Getting Started with Hokusai API 🌊
-> This document covers the setup and basic usages of Hokusai API. <br>
-> After completing this tutorial,  you'll be able to use Hokusai API and start integrating NFT on your website. 
+# Getting Started with Hokusai 🌊
+> This document covers the setup and basic usages of Hokusai. <br>
+> After completing this tutorial,  you'll be able to use Hokusai and start integrating NFT on your website. 
 > 
 ### Table of Contents
 **[Getting Started](#getting-started)**<br>
-**[Using Hokusai API](#using-hokusai-api)**<br>
+**[Using Hokusai](#using-hokusai-api)**<br>
 **[Hokusai Links](#hokusai-links)**<br>
 
 ## Getting Started
-To get started with Hokusai API, first, clone this repository and follow the below tutorial.
+To get started with Hokusai, first, clone this repository and follow the below tutorial.
 ```:bash
 git clone https://github.com/0xhokusai/hokusai-get-started.git
 ```
@@ -68,8 +68,8 @@ curl https://dweb.link/ipfs/bafyreieaaqfof34kfqyvwe4arta6jsuwuauim4d24qo22ct2xnv
     "image":"ipfs://bafybeicsu73gednfaa5svozuoac4ebpi76nn4auhygcvkvbn4kk2vdv5ey/hokusai.png"
 }
 ```
-## Using Hokusai API
-Congratulations! You're ready to use Hokusai API. Check out [Hokusai API Document](https://docs.hokusai.app/) for the full documentation. Now, let's try minting and getting an NFT. 
+## Using Hokusai
+Congratulations! You're ready to use Hokusai. Check out [Hokusai Document](https://docs.hokusai.app/) for the full documentation. Now, let's try minting and getting an NFT. 
 If you using the Mumbai testnet, change the baseUrl of src/getNft.ts and src/mintNft.ts's to "https://mumbai.hokusai.app".
 
 #### Mint an NFT
@@ -83,7 +83,7 @@ yarn mint-nft {to} {tokenUri}
 You may refer to our documentation [here](https://docs.hokusai.app/api/nft/mint) for parameter descriptions.
 
 #### Get an NFT
-`tokenId` issued by Hokusai API can be viewed via [polygonscan](https://mumbai.polygonscan.com). You can search by txHash received from minting. 
+`tokenId` issued by Hokusai can be viewed via [polygonscan](https://mumbai.polygonscan.com). You can search by txHash received from minting. 
 
 ```:bash
 yarn get-nft {tokenId}
@@ -117,7 +117,7 @@ yarn burn-nft {tokenId}
 
 > :warning: **The private key is very sensitive information. You should make sure no one else sees.**
 
-So far, you have minted an NFT, got NFT info and transfered an NFT via Hokusai API. See what else you can do with our API on [Hokusai API Document](https://docs.hokusai.app/) 🥳
+So far, you have minted an NFT, got NFT info and transfered an NFT via Hokusai. See what else you can do with our API on [Hokusai Document](https://docs.hokusai.app/) 🥳
 
 ## Hokusai Links
 - [Homepage](https://hokusai.app)
