@@ -19,7 +19,7 @@ async function transferNft(
   baseUrl: string,
   network: string,
   apiKey: string,
-  contractVer: string,
+  contractVer: number,
   contractId: string,
   messageWithSignature: MessageWithSignature
 ) {
@@ -55,7 +55,7 @@ async function main() {
   const walletPrivateKey = process.env.WALLET_PRIVATE_KEY || "";
   const network = process.env.CONTRACT_NETWORK || "";
   const apiKey = process.env.HOKUSAI_API_KEY || "";
-  const contractVer = process.env.HOKUSAI_CONTRACT_VERSION || "";
+  const contractVer = Number(process.env.HOKUSAI_CONTRACT_VERSION) || 2;
   const contractId = process.env.HOKUSAI_CONTRACT_ID || "";
   const contractAddress = process.env.HOKUSAI_CONTRACT_ADDRESS || "";
   const forwarderAddress = "0x0E285b682EAF6244a2AD3b1D25cFe61BF6A41fc3";
@@ -66,6 +66,7 @@ async function main() {
     const messageWithSignature = await getTransferMessageWithSignature(
       RPC,
       walletPrivateKey,
+      contractVer,
       contractAddress,
       forwarderAddress,
       toAddress,

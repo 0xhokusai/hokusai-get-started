@@ -1,11 +1,13 @@
 import { ethers } from "ethers";
 import { Message, MessageWithSignature, createTypedDataV4 } from "./TypedData";
 import ForwarderAbi from "./abis/MinimalForwarder.json";
-import HokusaiAbi from "./abis/ERC721WithRoyaltyMetaTx.json";
+import HokusaiAbiV1 from "./abis/ERC721WithRoyaltyMetaTx.json";
+import HokusaiAbiV2 from "./abis/ERC721HWithRoyaltyMetaTx.json";
 
 export async function getTransferMessageWithSignature(
   rpc: string,
   walletPrivateKey: string,
+  contractVer: number,
   contractAddress: string,
   forwarderAddress: string,
   toAddress: string,
@@ -23,8 +25,17 @@ export async function getTransferMessageWithSignature(
     ForwarderAbi.abi,
     provider
   );
-  const hokusaiInterface = new ethers.utils.Interface(HokusaiAbi.abi);
-
+  
+  // Switch contract interface by contract version
+  let hokusaiInterface: ethers.utils.Interface;
+  if (contractVer === 1) {
+    hokusaiInterface = new ethers.utils.Interface(HokusaiAbiV1.abi);
+  } else if (contractVer === 2) {
+    hokusaiInterface = new ethers.utils.Interface(HokusaiAbiV2.abi);
+  } else {
+    throw new Error(`Invalid contract version: ${contractVer}`);
+  }
+  
   // Create tranferFrom data
   const data = hokusaiInterface.encodeFunctionData("transferFrom", [
     address,
@@ -59,6 +70,7 @@ export async function getTransferMessageWithSignature(
 export async function getBurnMessageWithSignature(
   rpc: string,
   walletPrivateKey: string,
+  contractVer: number,
   contractAddress: string,
   forwarderAddress: string,
   tokenId: number
@@ -75,7 +87,16 @@ export async function getBurnMessageWithSignature(
     ForwarderAbi.abi,
     provider
   );
-  const hokusaiInterface = new ethers.utils.Interface(HokusaiAbi.abi);
+
+  // Switch contract interface by contract version
+  let hokusaiInterface: ethers.utils.Interface;
+  if (contractVer === 1) {
+    hokusaiInterface = new ethers.utils.Interface(HokusaiAbiV1.abi);
+  } else if (contractVer === 2) {
+    hokusaiInterface = new ethers.utils.Interface(HokusaiAbiV2.abi);
+  } else {
+    throw new Error(`Invalid contract version: ${contractVer}`);
+  }
 
   // Create burn data
   const data = hokusaiInterface.encodeFunctionData("burn", [
