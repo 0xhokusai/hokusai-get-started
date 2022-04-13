@@ -4,7 +4,7 @@ import { getTransferMessageWithSignature } from "./lib/MetaTx";
 
 require("dotenv").config();
 
-const baseUrl = "https://mumbai.hokusai.app";
+const baseUrl = "https://api.hokusai.app";
 const RPC = "https://rpc-mumbai.maticvigil.com";
 // If NETWORK_ERROR occur, try these RPC instead.
 // const RPC = "https://rpc-mumbai.maticvigil.com";
